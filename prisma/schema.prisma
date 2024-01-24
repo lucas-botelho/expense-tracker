@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model ExpenseCategory {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Expense Expense[]
+}
+
+model Expense {
+  id              Int             @id @default(autoincrement())
+  amount          Float
+  description     String
+  dayDue          DateTime
+  expenseCategory ExpenseCategory @relation(fields: [categoryId], references: [id])
+  categoryId      Int
+  userId          String
+}
