@@ -1,16 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../prisma/client'
-// import { Expense } from '@prisma/client';
-// type Data = {
-//     id: number,
-//     amount: number,
-//     description: string,
-//     dayDue: Date,
-//     categoryId: number,
-//     userId: string
-// }
-
-//fake commit
 
 interface Data {
     id: number;
