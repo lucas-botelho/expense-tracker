@@ -23,7 +23,7 @@ export default async function handler(
             const expenses = await prisma.expense.findMany();
             return res.status(200).json(expenses);
         } catch (error) {
-            return res.status(500);
+            return null;
         }
     }
 }
