@@ -13,8 +13,8 @@ async function getExpenses() {
 
 export default async function Home() {
 
-  const data = await getExpenses();
-  console.log(data);
+  // const data = await getExpenses();
+  // console.log(data);
   return (
     <main className="py-7 px-48">
       {
