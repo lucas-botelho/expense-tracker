@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../prisma/client'
-import { Expense } from '@prisma/client';
+// import { Expense } from '@prisma/client';
 // type Data = {
 //     id: number,
 //     amount: number,
@@ -10,7 +10,17 @@ import { Expense } from '@prisma/client';
 //     userId: string
 // }
 
-type Data = Expense;
+
+interface Data {
+    id: number;
+    amount: number;
+    description: string;
+    dayDue: Date;
+    categoryId: number;
+    userId: string;
+}
+
+
 
 export default async function handler(
     req: NextApiRequest,
@@ -27,3 +37,5 @@ export default async function handler(
         }
     }
 }
+
+
