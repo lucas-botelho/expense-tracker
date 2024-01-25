@@ -1,6 +1,24 @@
+
 import Link from "next/link";
 
-export default function Home() {
+async function getExpenses() {
+  debugger;
+  const response = await fetch(`${process.env.BASE_URL}/api/getExpenses`);
+  // const expenses = await response.json();
+  // return expenses;  
+
+  if (!response.ok) {
+    console.log("error");
+  }
+
+  return response.json();
+}
+
+export default async function Home() {
+  debugger;
+
+  const data = await getExpenses();
+  console.log(data);
   return (
     <main className="py-7 px-48">
       { //back ground color teal 500
