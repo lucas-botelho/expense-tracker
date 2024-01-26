@@ -11,9 +11,7 @@ export async function POST(request: Request) {
             content,
             published: true,
             author: {
-                create: {
-                    name: 'ryan'
-                }
+                connect: { id: 'clruy3k4a0000n9esx84wwakn' },
             }
         }
     })
