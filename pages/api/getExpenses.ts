@@ -19,10 +19,11 @@ export default async function handler(
     debugger;
     if (req.method === 'GET') {
         try {
+            console.log("inside getExpenses")
             //get prisma to fetch the expenses from the database
             const expenses = await prisma.expense.findMany();
             console.log(expenses);
-            return res.status(200).json(expenses);
+            return res.json(expenses);
         } catch (error) {
             return null;
         }
