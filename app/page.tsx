@@ -1,22 +1,26 @@
 
 import Link from "next/link";
+import prisma from "@/lib/prisma"
+import Post from "./components/Post";
 
-async function getExpenses() {
-  const response = await fetch(`${process.env.BASE_URL}/api/getExpenses`);
+async function getPost() {
+  const posts = await prisma.post.findMany({
+    where: {
+      published: true,
+    },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
 
-  console.log(response);
-
-  // if (!response.ok) {
-  //   console.log("error");
-  // }
-
-  return response.text();
+  return posts;
 }
 
 export default async function Home() {
-
-  const data = await getExpenses();
-  console.log(data);
+  const posts = await getPost();
+  console.log(posts);
   return (
     <main className="py-7 px-48">
       {
@@ -28,6 +32,17 @@ export default async function Home() {
         //rounded-md border radius 4px makes the button rounded
       }
       <Link className="bg-teal-500 text-black font-medium py-2 px-4 rounded-md" href={"/dashboard"}>Go to dashboard </Link >
+
+      {posts.map((post) => (
+        <Post
+          key={post.id}
+          id={Number(post.id)}
+          authorName={post.author?.name ?? ""}
+          title={post.title}
+          content={post.content ?? ""}
+        />
+      ))}
+
     </main>
   );
 }
