@@ -31,7 +31,7 @@ export default async function Home() {
         //px padding left and right 4px
         //rounded-md border radius 4px makes the button rounded
       }
-      <Link className="bg-teal-500 text-black font-medium py-2 px-4 rounded-md" href={"/dashboard"}>Go to dashboard </Link >
+      <Link className="bg-teal-500 text-black font-medium py-2 px-4 rounded-md" href={"/dashboard"}>Go to addPost </Link >
 
       {posts.map((post) => (
         <Post
