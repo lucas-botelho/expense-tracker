@@ -4,17 +4,19 @@ import Link from "next/link";
 async function getExpenses() {
   const response = await fetch(`${process.env.BASE_URL}/api/getExpenses`);
 
-  if (!response.ok) {
-    console.log("error");
-  }
+  console.log(response);
 
-  return response.json();
+  // if (!response.ok) {
+  //   console.log("error");
+  // }
+
+  return response.text();
 }
 
 export default async function Home() {
 
-  // const data = await getExpenses();
-  // console.log(data);
+  const data = await getExpenses();
+  console.log(data);
   return (
     <main className="py-7 px-48">
       {

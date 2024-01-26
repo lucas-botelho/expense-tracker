@@ -21,6 +21,7 @@ export default async function handler(
         try {
             //get prisma to fetch the expenses from the database
             const expenses = await prisma.expense.findMany();
+            console.log(expenses);
             return res.status(200).json(expenses);
         } catch (error) {
             return null;
