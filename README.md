@@ -42,3 +42,7 @@ notes
 npx prisma db push ---> create db via schema.prisma
 npx prisma studio ---> open db model
 npx prisma generate ---> update the prisma client everytime the schema is updated
+
+Run prod locally
+npm run build
+npm run start
