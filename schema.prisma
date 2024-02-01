@@ -29,3 +29,26 @@ model User {
 
   @@map(name: "users")
 }
+
+model Income {
+  id        String  @id @default(cuid())
+  name      String?
+  value     Float
+  recurring Boolean @default(false)
+}
+
+model Expense {
+  id         String    @id @default(cuid())
+  name       String?
+  value      Float
+  recurring  Boolean   @default(false)
+  date       DateTime?
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId Int
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  expenses Expense[]
+}
